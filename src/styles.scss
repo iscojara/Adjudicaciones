@@ -1,1 +1,146 @@
 /* You can add global styles to this file, and also import other style files */
+
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.mat-icon:hover{
+    cursor: pointer;
+}
+
+.adjudicaciones__table {
+    // max-height: 400px;
+    // overflow: auto;
+
+    table {
+        background: transparent;
+        color: #111;
+        width: 100%;
+    }
+
+    th{        
+        background: #fd600f1a !important;
+        font-weight: 700;
+        vertical-align: middle;
+        word-break: normal;
+        text-align: center;
+    }
+
+    td, th {
+        border-top: 1px solid transparent;
+        padding: 5px 10px 5px 5px;
+        border-color: #fd610e45;
+        text-align: left;
+    }
+    .first-colum{
+        text-align: center;
+    }
+
+    .mat-mdc-row:hover .mat-mdc-cell {
+        background: #F3F3F3;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #FFF !important; // Color de fondo para filas pares
+    }
+
+    tbody tr:nth-child(odd) {
+        background-color: #F9F9F9 !important; // Color de fondo para filas impares
+    }
+    .mat-mdc-paginator {
+        background-color: transparent!important;
+    }
+}
+
+$md-primary: (
+    50 : #ffede0,
+    100 : #ffd1b3,
+    200 : #ffb380,
+    300 : #ff944d,
+    400 : #ff7d26,
+    500 : #ff6600,
+    600 : #ff5e00,
+    700 : #ff5300,
+    800 : #ff4900,
+    900 : #ff3800,
+    contrast: (50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #000000,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+    )
+);
+
+$md-accent: (
+    50 : #ede8f7,
+    100 : #d2c5ec,
+    200 : #b49edf,
+    300 : #9577d2,
+    400 : #7f59c8,
+    500 : #683cbe,
+    600 : #6036b8,
+    700 : #552eaf,
+    800 : #4b27a7,
+    900 : #3a1a99,
+    contrast: (50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+    )
+);
+
+$md-warn: (
+    50 : #fcfcfc,
+    100 : #f8f8f9,
+    200 : #f3f4f5,
+    300 : #eeeff0,
+    400 : #eaebed,
+    500 : #e6e8ea,
+    600 : #e3e5e7,
+    700 : #dfe2e4,
+    800 : #dbdee1,
+    900 : #d5d8db,
+    contrast: (50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+    )
+);
+
+$my-primary: mat.m2-define-palette($md-primary);
+$my-accent: mat.m2-define-palette($md-accent);
+$my-warn: mat.m2-define-palette($md-warn);
+
+$my-theme: mat.m2-define-light-theme((color: (primary: $my-primary,
+                accent: $my-accent,
+                warn: $my-warn,
+            ),
+        ));
+
+@include mat.all-component-themes($my-theme);

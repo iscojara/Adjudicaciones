@@ -1,0 +1,122 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.example-is-mobile .example-toolbar {
+    position: fixed;
+    /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+    z-index: 2;
+}
+
+h1.example-app-name {
+    margin-left: 8px;
+}
+
+.example-sidenav-container {
+    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+    flex: 1;
+}
+
+.example-is-mobile .example-sidenav-container {
+    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+       `<body>` to be our scrolling element for mobile layouts. */
+    flex: 1 0 auto;
+}
+
+.autoplan__nav {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 1rem;
+    padding-left: 2rem;
+    width: 15rem;
+    height: 4rem;
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+}
+
+.autoplan__nav:hover {
+    background: #ff6600;
+    color: #FFF;
+    cursor: pointer;
+
+    a {
+        color: #FFF;
+    }
+}
+
+
+
+
+.autoplan__search {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+
+    @media (min-width: 600px) {
+        flex-direction: row;
+    }
+}
+
+
+
+.autoplan__container {
+    margin: 2rem; // Ajusta según sea necesario
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+
+    // @media (min-width: 600px) {
+    //     flex-direction: row;
+    //     justify-content: space-between;
+    // }
+
+    // .search-container {
+    //     display: flex;
+    //     align-items: center;
+    //     width: 100%;
+
+    //     @media (min-width: 600px) {
+    //         width: auto;
+    //     }
+    // }
+
+    // .search-field {
+    //     flex: 1;
+    //     margin-right: 8px; // Espacio entre el input y el botón
+    // }
+
+    // .search-button {
+    //     display: flex;
+    //     align-items: center;
+    //     height: 48px; // Ajusta según sea necesario para igualar la altura del input
+    //     padding: 0 16px; // Ajusta el padding para centrado vertical
+    // }
+
+    // .mat-form-field {
+    //     width: 100%;
+    // }
+
+    // .mat-form-field-appearance-outline .mat-form-field-flex {
+    //     padding: 0 8px;
+    //     height: 48px; // Ajusta para igualar la altura del botón
+    //     display: flex;
+    //     align-items: center; // Centra el contenido verticalmente
+    // }
+
+    // .mat-form-field-appearance-outline .mat-form-field-infix {
+    //     padding: 0;
+    // }
+}
+
