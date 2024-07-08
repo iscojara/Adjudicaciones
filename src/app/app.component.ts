@@ -3,6 +3,8 @@ import { AfterViewInit, ChangeDetectorRef, Component, HostListener, inject, OnDe
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { AdjudicacionesService } from './adjudicaciones.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AdjudicacionesDialogComponent } from './adjudicaciones-dialog/adjudicaciones-dialog.component';
 
 export interface AdjudicacionesElement {
   grupo: string;
@@ -44,9 +46,9 @@ for (let i = 0; i < 100; i++) {
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit,OnDestroy, AfterViewInit {
+export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   mobileQuery: MediaQueryList;
-  
+
   adjudicacionesService = inject(AdjudicacionesService);
   displayedColumns: string[] = ['contrato', 'programa', 'grupo', 'asociado', 'fecha', 'detalle'];
   dataSource = new MatTableDataSource<AdjudicacionesElement>();
@@ -64,7 +66,7 @@ export class AppComponent implements OnInit,OnDestroy, AfterViewInit {
 
   private _mobileQueryListener: () => void;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public dialog: MatDialog) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -77,13 +79,13 @@ export class AppComponent implements OnInit,OnDestroy, AfterViewInit {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
-  async search(numero: string){
+  async search(numero: string) {
     try {
-    const _response = await this.adjudicacionesService.searchAdjudicaciones(numero);
-    console.log(_response); 
-    this.dataSource.data = _response;
+      const _response = await this.adjudicacionesService.searchAdjudicaciones(numero);
+      console.log(_response);
+      this.dataSource.data = _response;
       this.dataSource.paginator = this.paginator;
-      this.paginator.pageSize = 5; 
+      this.paginator.pageSize = 5;
     } catch (error) {
       console.log(error)
     }
@@ -98,5 +100,11 @@ export class AppComponent implements OnInit,OnDestroy, AfterViewInit {
 
     // Set the input's value to the cleaned value
     input.value = value;
+  }
+
+  openDialog(row: AdjudicacionesElement): void {
+    this.dialog.open(AdjudicacionesDialogComponent, {
+      data: row
+    });
   }
 }

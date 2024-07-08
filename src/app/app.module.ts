@@ -17,10 +17,12 @@ import { MatTableModule } from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
+import { AdjudicacionesDialogComponent } from './adjudicaciones-dialog/adjudicaciones-dialog.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AdjudicacionesDialogComponent
   ],
   imports: [
     BrowserModule,

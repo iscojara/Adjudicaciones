@@ -1,0 +1,14 @@
+<div style="margin: 2rem;">
+    <h1 mat-dialog-title>Detalles de Adjudicación</h1>
+    <div mat-dialog-content>
+        <p><strong>Grupo:</strong> {{data.grupo}}</p>
+        <p><strong>Programa:</strong> {{data.programa}}</p>
+        <p><strong>Número:</strong> {{data.numero}}</p>
+        <p><strong>Asociado:</strong> {{data.asociado}}</p>
+        <p><strong>Fecha:</strong> {{data.fecha | date}}</p>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button color="accent" (click)="close()">Cerrar</button>
+    </div>
+
+</div>
