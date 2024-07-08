@@ -16,10 +16,14 @@ body {
 .mat-icon:hover{
     cursor: pointer;
 }
+.mat-mdc-form-field-subscript-wrapper {
+    height: 0!important;
+}
 
 .adjudicaciones__table {
     // max-height: 400px;
     // overflow: auto;
+    margin-top: 2rem;
 
     table {
         background: transparent;

@@ -55,68 +55,36 @@ h1.example-app-name {
     }
 }
 
-
-
-
 .autoplan__search {
     display: flex;
     gap: 1rem;
     flex-direction: column;
     align-items: center;
+    button{
+        width: 100%;
+        height: 40px!important;
+    }
+    .mat-mdc-form-field {
+        
+        width: 100%;
+    }
 
     @media (min-width: 600px) {
         flex-direction: row;
+        button{
+            width: auto;
+            
+    height: 56px!important;
+        }
+        .mat-mdc-form-field {
+            
+            width: auto;
+        }
     }
 }
-
-
 
 .autoplan__container {
     margin: 2rem; // Ajusta según sea necesario
     display: flex;
     flex-direction: column;
-    // align-items: center;
-
-    // @media (min-width: 600px) {
-    //     flex-direction: row;
-    //     justify-content: space-between;
-    // }
-
-    // .search-container {
-    //     display: flex;
-    //     align-items: center;
-    //     width: 100%;
-
-    //     @media (min-width: 600px) {
-    //         width: auto;
-    //     }
-    // }
-
-    // .search-field {
-    //     flex: 1;
-    //     margin-right: 8px; // Espacio entre el input y el botón
-    // }
-
-    // .search-button {
-    //     display: flex;
-    //     align-items: center;
-    //     height: 48px; // Ajusta según sea necesario para igualar la altura del input
-    //     padding: 0 16px; // Ajusta el padding para centrado vertical
-    // }
-
-    // .mat-form-field {
-    //     width: 100%;
-    // }
-
-    // .mat-form-field-appearance-outline .mat-form-field-flex {
-    //     padding: 0 8px;
-    //     height: 48px; // Ajusta para igualar la altura del botón
-    //     display: flex;
-    //     align-items: center; // Centra el contenido verticalmente
-    // }
-
-    // .mat-form-field-appearance-outline .mat-form-field-infix {
-    //     padding: 0;
-    // }
 }
-

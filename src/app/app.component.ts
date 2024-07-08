@@ -1,7 +1,8 @@
 import { MediaMatcher } from '@angular/cdk/layout';
-import { AfterViewInit, ChangeDetectorRef, Component, HostListener, OnDestroy, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, HostListener, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { AdjudicacionesService } from './adjudicaciones.service';
 
 export interface AdjudicacionesElement {
   grupo: string;
@@ -43,11 +44,12 @@ for (let i = 0; i < 100; i++) {
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnDestroy, AfterViewInit {
+export class AppComponent implements OnInit,OnDestroy, AfterViewInit {
   mobileQuery: MediaQueryList;
   
+  adjudicacionesService = inject(AdjudicacionesService);
   displayedColumns: string[] = ['contrato', 'programa', 'grupo', 'asociado', 'fecha', 'detalle'];
-  dataSource = new MatTableDataSource<AdjudicacionesElement>(ELEMENT_DATA);
+  dataSource = new MatTableDataSource<AdjudicacionesElement>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -59,7 +61,6 @@ export class AppComponent implements OnDestroy, AfterViewInit {
   }
 
   fillerNav = [];
-  
 
   private _mobileQueryListener: () => void;
 
@@ -68,9 +69,24 @@ export class AppComponent implements OnDestroy, AfterViewInit {
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
+  async ngOnInit(): Promise<any> {
+    await this.search('6');
+  }
 
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
+  }
+
+  async search(numero: string){
+    try {
+    const _response = await this.adjudicacionesService.searchAdjudicaciones(numero);
+    console.log(_response); 
+    this.dataSource.data = _response;
+      this.dataSource.paginator = this.paginator;
+      this.paginator.pageSize = 5; 
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   onlyNumbers(event: any): void {
